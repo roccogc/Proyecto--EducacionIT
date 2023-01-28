@@ -1,0 +1,45 @@
+<table class="table bg-black ">
+  <thead class="text-white">
+    <tr>
+
+      <th scope="col">Tipo</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Eliminar</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Fecha de creacion</th>
+
+    </tr>
+  </thead>
+  <tbody class="text-white">
+    {{#each transaccions}}
+      <tr>
+        <td>{{tipo}}</td>
+        
+        <td>{{description}}</td>
+        
+        <td id="monto">{{monto}}</td>
+        <td>
+          <form action="/transaccion/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-danger">Borrar</button>
+          </form>
+            
+        </td>
+        <td>
+
+          
+            <a href="/transaccion/edit/{{_id}}">
+            <button type="submit" class="btn btn-success">Editar</button>
+            </a>
+    
+        </td>
+        <td> {{createdAt}}</td>
+
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+
+<button class="btn btn-success"><a class="dropdown-item" href="/transaccion/add">Nueva transaccion</a></button>
